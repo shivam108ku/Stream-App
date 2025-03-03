@@ -4,15 +4,15 @@ import instance from '../../utils/axios';
 
 const Topnav = () => {
     const [query, setQuery] = useState("");
-    const [searches, setSearches] = useState([]); // ✅ Initialize as an empty array
+    const [searches, setSearches] = useState([]);  
 
     const GetSearches = async () => {
-        if (!query.trim()) return; // ✅ Prevent API call if query is empty
+        if (!query.trim()) return;  
 
         try {
             const { data } = await instance.get(`/search/multi?query=${query}`);
-            console.log(data); // ✅ Fix console log
-            setSearches(data.results || []); // ✅ Ensure searches is always an array
+            console.log(data);  
+            setSearches(data.results || []);  
         } catch (error) {
             console.error("Error fetching search results:", error);
         }
@@ -23,8 +23,8 @@ const Topnav = () => {
     }, [query]);
 
     return (
-        <div className='w-full h-[10vh] ml-[15%] relative flex justify-start items-center'>
-            <i className="text-3xl text-zinc-400 ri-search-line"></i>
+        <div className='w-full h-[10vh]  relative flex justify-start items-center'>
+            <i className="text-2xl ml-5 text-zinc-400 ri-search-line"></i>
             <input 
                 onChange={(e) => setQuery(e.target.value)}
                 value={query}
@@ -37,14 +37,18 @@ const Topnav = () => {
                 <i onClick={() => setQuery("")} className="text-3xl text-zinc-400 ri-close-line cursor-pointer"></i>
             )}
 
-            {searches.length > 0 && (
-                <div className='overflow-auto rounded-xl absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[90%]'>
+            {searches.length > 0 && query.length > 0 && (
+                <div className='overflow-auto rounded-xl absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[100%] left-[5%]'>
                     {searches.map((search, index) => (
                         <Link 
                             key={search.id || index} 
-                            className='hover:text-black hover:bg-zinc-300 duration-300 text-zinc-600 font-semibold p-5 flex justify-start items-center bg-zinc-100 w-[100%] border-b-2 border-white'
+                            className='hover:text-black hover:bg-zinc-300 duration-300
+                             text-zinc-600 font-semibold p-5
+                              flex justify-start items-center
+                               bg-zinc-100 w-[100%] border-b-2
+                                border-white'
                         >
-                            <img className='h-[10vh]  rounded-full mr-4 object-center w-[10vh]'
+                            <img className='h-[10vh] rounded-full mr-4 object-center w-[10vh]'
                                 src={search.poster_path || search.profile_path 
                                     ? `https://image.tmdb.org/t/p/w92${search.poster_path || search.profile_path}` 
                                     : ""}
