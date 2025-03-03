@@ -3,7 +3,7 @@ import React from 'react';
 const HorizontalCards = ({data}) => {
   return ( 
 
-      <div className='w-full h-[45vh] overflow-y-auto flex'>
+      <div className='w-full ml-2 h-[45vh] overflow-y-auto flex'>
         {data.map((d,i) => (
           <div 
             key={i} 
