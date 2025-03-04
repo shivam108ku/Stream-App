@@ -7,6 +7,7 @@ import Cards from './Cards';
 import Loading from './Loading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+
 const Trending = () => {
 
     const navigate = useNavigate();
@@ -63,7 +64,7 @@ const Trending = () => {
                 </div>
             </div>
     
-            {/* ✅ Ensures background extends while scrolling */}
+             
             <InfiniteScroll
                 dataLength={trending.length}
                 next={GetTrending}
