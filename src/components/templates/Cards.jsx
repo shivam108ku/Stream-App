@@ -2,10 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Cards = ({data , title}) => {
+
   return (
     <div className='flex flex-wrap ml-[5%] w-full h-full px-[5%]'>
         {data.map((c,i)=> (
-        <Link 
+        <Link to={`/${data.media_type || title}/details/${c.id}`}
         className='w-[25vh] relative mr-[5%] mb-[5%] '
          key={i}>
             <img 
