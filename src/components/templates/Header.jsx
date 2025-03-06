@@ -25,6 +25,7 @@ const Header = ({data}) => {
          <p 
          className ='w-[70%] text-white'>
             {data.overview.slice(0,200)}...<Link 
+            to={`/${data.media_type}/details/${data.id}`}
             className='text-purple-600'>more</Link>
         </p>
 

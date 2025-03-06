@@ -41,6 +41,7 @@ const Topnav = () => {
                 <div className='overflow-auto rounded-xl absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[100%] left-[5%]'>
                     {searches.map((search, index) => (
                         <Link 
+                        to={`/${search.media_type}/details/${search.id}`}
                             key={search.id || index} 
                             className='hover:text-black hover:bg-zinc-300 duration-300
                              text-zinc-600 font-semibold p-5
