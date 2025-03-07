@@ -8,6 +8,7 @@ export const asyncloadmovie = (id) => async (dispatch, getState) => {
         const externalid = await instance.get(`/movie/${id}/external_ids`);
         const recommendations = await instance.get(`/movie/${id}/recommendations`);
         const similar = await instance.get(`/movie/${id}/similar`);
+         
         const videos = await instance.get(`/movie/${id}/videos`);
         const watchprovider = await instance.get(`/movie/${id}/watch/providers`);
 
